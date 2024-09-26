@@ -67,6 +67,19 @@ int main()
     ifstream fin;
     // open the input file
     fin.open(inputFile);
+
+    // the if condition checks if the input file opened correctly
+    if (fin.good())
+    {
+        while (getline(fin, t)) // reading of movie title data from file
+        {
+            fin >> y; // reading of release year data from file
+            fin.ignore();
+            getline(fin, s); // reading of screenwriter name data from file
+
+            // creation of a temporary Movie object
+        }
+    }
     
     return 0;
 }
