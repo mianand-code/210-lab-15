@@ -44,11 +44,29 @@ class Movie
     // RETURNS: nothing, void function
     void print()
     {
-        
+        cout << "Movie title: " << movieTitle << endl;
+        cout << "Year released: " << yearReleased << endl;
+        cout << "Screenwriter name: " << screenwriterName << endl;
+        cout << endl;
     }
 };
 
 int main()
 {
+    // creation of an STD::vector container 
+    vector<Movie> movieVector;
+
+    // declaration of temporary variables
+    string t; // to hold a temp movie title name
+    int y; // to hold a temp release year
+    string s; // to hold a temp screenwriter name
+
+    // declaration and initialization of a string variable that holds the name of the input file to read data from
+    string inputFile = "movieInfo.txt";
+    // creation of an ifsteam (input file) object
+    ifstream fin;
+    // open the input file
+    fin.open(inputFile);
+    
     return 0;
 }
