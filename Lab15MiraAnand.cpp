@@ -95,7 +95,16 @@ int main()
     // if the input file did not open correctly, execute "else"
     else
     {
-        
+        cout << "ERROR: Could not open input file. Please make sure the file exists in the correct location and try running the program again." << endl;
+        cout << "Program will now exit..." << endl;
+        return 1; // return an error state
+    }
+
+    // output contents of the vector
+    // using a C++ 11 range loop and "auto" keyword to output contents of the vector
+    for (auto movie : movieVector)
+    {
+        movie.print();
     }
     
     return 0;
