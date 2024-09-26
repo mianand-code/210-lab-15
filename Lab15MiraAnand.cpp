@@ -71,6 +71,7 @@ int main()
     // the if condition checks if the input file opened correctly
     if (fin.good())
     {
+        // while loop will continue until there are no more movie titles to be read from file
         while (getline(fin, t)) // reading of movie title data from file
         {
             fin >> y; // reading of release year data from file
@@ -78,7 +79,23 @@ int main()
             getline(fin, s); // reading of screenwriter name data from file
 
             // creation of a temporary Movie object
+            Movie temp;
+            temp.setTitle(t);
+            temp.setYear(y);
+            temp.setScreenwriter(s);
+
+            // appending temporary Movie object to STD::vector container
+            // using push_back() so that data can be pushed into the vector, meaning the user can have as many movie records in the file as they would like
+            movieVector.push_back(temp);
         }
+
+        // close the input file
+        fin.close();
+    }
+    // if the input file did not open correctly, execute "else"
+    else
+    {
+        
     }
     
     return 0;
