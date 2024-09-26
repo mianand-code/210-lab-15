@@ -5,7 +5,7 @@
 #include <fstream> // to be able to read data from an external .txt file
 #include <iostream>
 #include <string>
-#include <vector> // // to use STD::vector
+#include <vector> // // to use STD::vector, choosing <vector> class vector as my container for this lab
 using namespace std;
 
 // creation of Movie class
@@ -23,9 +23,29 @@ class Movie
     // function header
     // DESCRIPTION:
     // ARGUMENTS:
+    // RETURNS: nothing, void functions
+    void setTitle(string t)             { movieTitle = t; }
+    void setYear(int y)                 { yearReleased = y; }
+    void setScreenwriter (string s)     { screenwriterName = s; }
+    // creating all getters together, to keep it organized
+    // function header
+    // DESCRIPTION:
+    // ARGUMENTS:
     // RETURNS:
-    void setTitle(string t)     { movieTitle = t; }
-    void setYear(int y)         { yearReleased = y; }
+    // adding a trailing const to each, since getters do not change an object's data
+    string getTitle() const         { return movieTitle; }
+    int getYear() const             { return yearReleased; }
+    string getScreenwriter() const  { return screenwriterName; }
+
+    // creating a member print() method to print the object's data
+    // void print() function header
+    // DESCRIPTION: this function neatly outputs the data for each Movie object
+    // ARGUMENTS: no arguments/parameters
+    // RETURNS: nothing, void function
+    void print()
+    {
+        
+    }
 };
 
 int main()
