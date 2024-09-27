@@ -20,18 +20,18 @@ class Movie
     // using inline functions for setters and getters, since functions are 1 line
     public:
     // creating all setters together, to keep it organized
-    // function header
-    // DESCRIPTION:
-    // ARGUMENTS:
+    // void setTitle(string t), void setYear(int y), void setScreenwriter(string s) function header
+    // DESCRIPTION: these functions will "set" the title, year, and screenwriter data for each Movie object
+    // ARGUMENTS: string t, int y, & string s. Represents the title, year, and screenwriter for each movie
     // RETURNS: nothing, void functions
     void setTitle(string t)             { movieTitle = t; }
     void setYear(int y)                 { yearReleased = y; }
     void setScreenwriter (string s)     { screenwriterName = s; }
     // creating all getters together, to keep it organized
-    // function header
-    // DESCRIPTION:
-    // ARGUMENTS:
-    // RETURNS:
+    // string getTitle() const, int getYear() const, string getScreenwriter() const function header
+    // DESCRIPTION: these functions will "get" the title, year, and screenwriter data for each Movie object after they are "set"
+    // ARGUMENTS: no arguments/parameters
+    // RETURNS: string movieTitle, int yearReleased, string screenwriterName. Returns title, year, and screenwriter data for each movie
     // adding a trailing const to each, since getters do not change an object's data
     string getTitle() const         { return movieTitle; }
     int getYear() const             { return yearReleased; }
@@ -39,7 +39,7 @@ class Movie
 
     // creating a member print() method to print the object's data
     // void print() function header
-    // DESCRIPTION: this function neatly outputs the data for each Movie object
+    // DESCRIPTION: this function simply outputs the data for each Movie object
     // ARGUMENTS: no arguments/parameters
     // RETURNS: nothing, void function
     void print()
@@ -53,13 +53,13 @@ class Movie
 
 int main()
 {
-    // creation of an STD::vector container 
+    // creation of an STD::vector container to hold multiple Movie objects
     vector<Movie> movieVector;
 
-    // declaration of temporary variables
-    string t; // to hold a temp movie title name
-    int y; // to hold a temp release year
-    string s; // to hold a temp screenwriter name
+    // declaration of temporary variables for our temporary Movie object
+    string title; // to hold a temp movie title name
+    int year; // to hold a temp release year
+    string screenwriter; // to hold a temp screenwriter name
 
     // declaration and initialization of a string variable that holds the name of the input file to read data from
     string inputFile = "movieInfo.txt";
@@ -71,18 +71,18 @@ int main()
     // the if condition checks if the input file opened correctly
     if (fin.good())
     {
-        // while loop will continue until there are no more movie titles to be read from file
-        while (getline(fin, t)) // reading of movie title data from file
+        // while loop will continue until there are no more movie titles to be read from the file
+        while (getline(fin, title)) // reading of movie title data from file
         {
-            fin >> y; // reading of release year data from file
+            fin >> year; // reading of release year data from file
             fin.ignore();
-            getline(fin, s); // reading of screenwriter name data from file
+            getline(fin, screenwriter); // reading of screenwriter name data from file
 
             // creation of a temporary Movie object
             Movie temp;
-            temp.setTitle(t);
-            temp.setYear(y);
-            temp.setScreenwriter(s);
+            temp.setTitle(title); // calling the setTitle() public member function, setting the title for the temp Movie object
+            temp.setYear(year); // calling the setYear() public member function, setting the year for the temp Movie object
+            temp.setScreenwriter(screenwriter); // calling the setScreenwriter() public member function, setting the screenwriter for the temp Movie object
 
             // appending temporary Movie object to STD::vector container
             // using push_back() so that data can be pushed into the vector, meaning the user can have as many movie records in the file as they would like
@@ -104,6 +104,8 @@ int main()
     // using a C++ 11 range loop and "auto" keyword to output contents of the vector
     for (auto movie : movieVector)
     {
+        // printing contents by calling the print() public member function
+        // we could also print the contents by calling the getters, if we did not have a print() public member function
         movie.print();
     }
     
